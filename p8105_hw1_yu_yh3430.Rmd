@@ -1,28 +1,72 @@
 ---
 title: "p8105_hw1_yu_yh3430"
-output: html_document
+author: Yu He
+date: 2021-09-28
+output:  github_document
+   
 ---
+Homework 1 for P8105 data science
+By Yu He
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+## Homework 1 Question 1
+Part 1 create data frame includes numeric, character, and factor variables
+
+```{r }
+library(tidyverse)
+
+set.seed(123456789)
+
+HW1_Q1 <- tibble(
+  norm_var = rnorm(10),
+  norm_var_pos = norm_var > 0,
+  char_var = c("hello", "this", "is", "my", "first", "R", "programming", "class", "excellent", "experience"),
+  fact_var = factor(c("a", "a", "b", "b", "c", "c", "a", "a", "b", "b"))
+)
 ```
 
-## R Markdown
+Part 2 take mean of each variable
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+mean_norm_var = mean(pull(HW1_Q1, norm_var))
+mean_norm_var_pos = mean(pull(HW1_Q1, norm_var_pos))
+mean_char_var = mean(pull(HW1_Q1, char_var))
+mean_fact_var = mean(pull(HW1_Q1, fact_var))
 ```
 
-## Including Plots
+take mean results - the numeric and logic give us the mean value
+the character and factor vector give us the warning message - argument is not numeric or logic
 
-You can also embed plots, for example:
+Part 3 take mean after applies the as.numeric function
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+mean(as.numeric(pull(HW1_Q1, char_var)))
+mean(as.numeric(pull(HW1_Q1, norm_var_pos)))
+mean(as.numeric(pull(HW1_Q1, fact_var)))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The as.numeric function convert other type of variable to numeric variable
+
+## Homework 1 Question 2
+Part 1 load package and dataset 
+
+```{r}
+install.packages("palmerpenguins")
+data("penguins", package = "palmerpenguins")
+```
+
+Part 2 description of penguins dataset
+The summary of dataset penguins provides max, min, mean, median values for each values.
+`r summary(penguins)`
+The dataset includes `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+the mean value of flipper length is `r print(summary(penguins) [4, 5])`.
+
+Part 3 scatterplot of flipper_length_mm (y) vs bill_length_mm (X), and save the scatterplot as pdf.
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave("scatterplot_penguins.pdf")
+```
+
+
+
+
