@@ -6,10 +6,9 @@ output:  github_document
    
 ---
 Homework 1 for P8105 data science
-By Yu He
 
 ## Homework 1 Question 1
-Part 1 create data frame includes numeric, character, and factor variables
+Create data frame includes numeric, character, and factor variables
 
 ```{r }
 library(tidyverse)
@@ -24,7 +23,7 @@ HW1_Q1 <- tibble(
 )
 ```
 
-Part 2 take mean of each variable
+Take mean of each variable
 
 ```{r}
 mean_norm_var = mean(pull(HW1_Q1, norm_var))
@@ -33,10 +32,10 @@ mean_char_var = mean(pull(HW1_Q1, char_var))
 mean_fact_var = mean(pull(HW1_Q1, fact_var))
 ```
 
-take mean results - the numeric and logic give us the mean value
-the character and factor vector give us the warning message - argument is not numeric or logic
+Take mean results - the numeric and logic give us the mean value
+The character and factor vector give us the warning message - argument is not numeric or logic
 
-Part 3 take mean after applies the as.numeric function
+Take mean after applies the as.numeric function
 
 ```{r}
 mean(as.numeric(pull(HW1_Q1, char_var)))
@@ -50,7 +49,7 @@ The as.numeric function convert other type of variable to numeric variable
 Part 1 load package and dataset 
 
 ```{r}
-install.packages("palmerpenguins")
+
 data("penguins", package = "palmerpenguins")
 ```
 
