@@ -47,17 +47,18 @@ The as.numeric function convert other type of variable to numeric variable
 
 ## Homework 1 Question 2
 Part 1 load package and dataset 
+download the package containing penguins dataset by install.packages("plamerpenguins")
 
 ```{r}
-
 data("penguins", package = "palmerpenguins")
 ```
 
 Part 2 description of penguins dataset
 The summary of dataset penguins provides max, min, mean, median values for each values.
 `r summary(penguins)`
+
 The dataset includes `r nrow(penguins)` rows and `r ncol(penguins)` columns.
-the mean value of flipper length is `r print(summary(penguins) [4, 5])`.
+the mean value of flipper length is `r summary(penguins) [4, 5]`.
 
 Part 3 scatterplot of flipper_length_mm (y) vs bill_length_mm (X), and save the scatterplot as pdf.
 ```{r}
