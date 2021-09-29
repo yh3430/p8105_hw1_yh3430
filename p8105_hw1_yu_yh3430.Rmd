@@ -8,7 +8,7 @@ output:  github_document
 Homework 1 for P8105 data science
 
 ## Homework 1 Question 1
-Create data frame includes numeric, character, and factor variables
+# Part 1 create data frame includes numeric, character, and factor variables
 
 ```{r }
 library(tidyverse)
@@ -23,7 +23,7 @@ HW1_Q1 <- tibble(
 )
 ```
 
-Take mean of each variable
+# Part 2 take mean of each variable
 
 ```{r}
 mean_norm_var = mean(pull(HW1_Q1, norm_var))
@@ -35,7 +35,7 @@ mean_fact_var = mean(pull(HW1_Q1, fact_var))
 Take mean results - the numeric and logic give us the mean value
 The character and factor vector give us the warning message - argument is not numeric or logic
 
-Take mean after applies the as.numeric function
+# Part 3 take mean after applies the as.numeric function
 
 ```{r}
 mean(as.numeric(pull(HW1_Q1, char_var)))
@@ -43,24 +43,25 @@ mean(as.numeric(pull(HW1_Q1, norm_var_pos)))
 mean(as.numeric(pull(HW1_Q1, fact_var)))
 ```
 
-The as.numeric function convert other type of variable to numeric variable
+The as.numeric function convert other type of variable to numeric variable. And not all variables can be converted into numeric varibles.
+
 
 ## Homework 1 Question 2
-Part 1 load package and dataset 
+# Part 1 load package and dataset 
 download the package containing penguins dataset by install.packages("plamerpenguins")
 
 ```{r}
 data("penguins", package = "palmerpenguins")
 ```
 
-Part 2 description of penguins dataset
-The summary of dataset penguins provides max, min, mean, median values for each values.
-`r summary(penguins)`
+# Part 2 description of penguins dataset
+The summary of dataset penguins provides variables includes `r names(penguins)`.
 
 The dataset includes `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
 the mean value of flipper length is `r summary(penguins) [4, 5]`.
 
-Part 3 scatterplot of flipper_length_mm (y) vs bill_length_mm (X), and save the scatterplot as pdf.
+# Part 3 scatterplot of flipper_length_mm (y) vs bill_length_mm (X), and save the scatterplot as pdf.
 ```{r}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 
